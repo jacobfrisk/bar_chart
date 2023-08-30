@@ -13,7 +13,7 @@ function generateBarChart() {
   // sætter css property "--height", som bestemmer farver og højde på li elementet, til vores randomNumber
   li.style.setProperty("--height", `${randomNumber}`);
 
-  if (list.children.lenght > 20) {
+  if (list.children.length > 20) {
     list.removeChild(list.children[0]);
   }
 }
