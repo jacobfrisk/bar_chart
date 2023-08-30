@@ -1,22 +1,21 @@
 const list = document.querySelector("ul");
 
-const randomNumbers = [];
+function generateBarChart() {
+  // Generer et random tal
+  let randomNumber = Math.floor(Math.random() * 100 + 1);
 
-for (let i = 0; i < 20; i++) {
-  const randomNumber = Math.floor(Math.random() * 101);
-  randomNumbers.push(randomNumber); // Tilføjer de tilfældige tal til arrayet
-  console.log(randomNumber);
-}
-
-function appendNumbers(number) {
+  // Generer et li element
   const li = document.createElement("li");
-  li.style.setProperty("--height", `${number}`);
+
+  // Påsæt li element i listen
   list.appendChild(li);
+
+  // sætter css property "--height", som bestemmer farver og højde på li elementet, til vores randomNumber
+  li.style.setProperty("--height", `${randomNumber}`);
+
+  if (list.children.lenght > 20) {
+    list.removeChild(list.children[0]);
+  }
 }
 
-// Dette er en anonym funktion da den ikke har noget navn
-randomNumbers.forEach((number, index) => {
-  setTimeout(() => {
-    appendNumbers(number); // setTimeout tager to argumenter. Det ene er hvad den skal delaye
-  }, 1000 * index); // Det andet er hvor hurtigt den skal gøre det. Man bruger index til at fortælle hvor den skal køre setTimeout fra.
-});
+setInterval(generateBarChart, 1000);
